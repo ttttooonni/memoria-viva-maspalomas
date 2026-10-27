@@ -91,7 +91,7 @@
   // Juego 4: pistas musicales descriptivas; no incluye letras ni grabaciones.
   const songs = [
     {clue:"Una canción italiana muy conocida cuyo título invita a volar y que se hizo famosa internacionalmente en los años cincuenta.",a:["Volare (Nel blu dipinto di blu)","La Macarena","Bésame mucho"],correct:0},
-    {clue:"Un pasodoble español muy popular que suele sonar en fiestas y verbenas, y que comparte nombre con una ciudad de Aragón.",a:["Valencia","Zaragoza","Sevilla"],correct:0},
+    {clue:"Un pasodoble español muy popular que suele sonar en fiestas y verbenas, y que comparte nombre con una ciudad de la Comunidad Valenciana.",a:["Valencia","Zaragoza","Sevilla"],correct:0},
     {clue:"Una canción tradicional de cumpleaños que muchas familias cantan cuando alguien sopla las velas.",a:["Cumpleaños feliz","La Tarara","Asturias, patria querida"],correct:0},
     {clue:"Una canción popular española asociada a una muñeca vestida de azul y a una historia contada con humor.",a:["Tengo una muñeca vestida de azul","Clavelitos","La chica ye-yé"],correct:0},
     {clue:"Una canción tradicional muy vinculada a Asturias, que también se canta en reuniones y celebraciones.",a:["Asturias, patria querida","Granada","La bamba"],correct:0},
