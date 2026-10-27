@@ -5,6 +5,40 @@
   const normalize = (value) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("es").trim();
   const tabs = [...document.querySelectorAll(".game-tab")];
   const panels = [...document.querySelectorAll(".game-panel")];
+  let playMode = "solo", difficulty = "medio";
+  const modeButtons = [...document.querySelectorAll("[data-mode]")];
+  const levelButtons = [...document.querySelectorAll("[data-level]")];
+  function updateGuidance() {
+    const guidance = $("play-guidance");
+    if (!guidance) return;
+    const modeText = playMode === "acompanado"
+      ? "Modo en compañía: una persona puede leer las instrucciones, dar pistas y celebrar cada intento. Preguntad siempre si la persona quiere ayuda."
+      : "Modo a mi ritmo: juega por tu cuenta o pide ayuda cuando te apetezca. Puedes parar o cambiar de juego en cualquier momento.";
+    const levelText = difficulty === "facil"
+      ? "Nivel tranquilo: menos cartas, pistas claras y palabras sencillas."
+      : difficulty === "reto"
+        ? "Un pequeño reto: más cartas y palabras de partida menos habituales. Sin cronómetro ni penalizaciones."
+        : "Nivel habitual: una dificultad intermedia, adaptable según el día.";
+    guidance.textContent = modeText + " " + levelText;
+  }
+  modeButtons.forEach((button) => button.addEventListener("click", () => {
+    playMode = button.dataset.mode;
+    modeButtons.forEach((item) => { const active = item === button; item.classList.toggle("active", active); item.setAttribute("aria-pressed", String(active)); });
+    updateGuidance();
+    const support = $("prompt-support");
+    if (support) support.textContent = playMode === "acompanado"
+      ? "La persona acompañante puede leer despacio, escuchar sin corregir y dejar que la persona decida si quiere contar algo. También está bien pasar a otra pregunta."
+      : "Puedes responder hablando, señalando una imagen o simplemente escuchando. No tienes que compartir nada que no te apetezca.";
+  }));
+  levelButtons.forEach((button) => button.addEventListener("click", () => {
+    difficulty = button.dataset.level;
+    levelButtons.forEach((item) => { const active = item === button; item.classList.toggle("active", active); item.setAttribute("aria-pressed", String(active)); });
+    updateGuidance();
+    if (typeof setupMemory === "function") setupMemory();
+    if (typeof resetWordGame === "function") resetWordGame();
+    if (typeof newScene === "function") newScene();
+  }));
+  updateGuidance();
   tabs.forEach((tab) => tab.addEventListener("click", () => {
     tabs.forEach((item) => { const active = item === tab; item.classList.toggle("active", active); item.setAttribute("aria-pressed", String(active)); });
     panels.forEach((panel) => panel.classList.toggle("active", panel.id === "game-" + tab.dataset.game));
@@ -23,11 +57,11 @@
   }
 
   // Juego 1: parejas. No hay reloj ni penalización.
-  const symbols = ["🌻", "☕", "🎸", "🐚", "🍊", "📚"];
+  const symbols = ["🌻", "☕", "🎸", "🐚", "🍊", "📚", "🧶", "🌼"];
   let deck = [], firstCard = null, lockBoard = false, matchedPairs = 0, turns = 0;
   function setupMemory() {
-    deck = shuffle([...symbols, ...symbols]); firstCard = null; lockBoard = false; matchedPairs = 0; turns = 0;
-    $("memory-grid").innerHTML = ""; $("memory-status").textContent = "Pulsa dos cartas para empezar."; $("memory-pairs").textContent = "Parejas: 0 de 6";
+    const pairCount = difficulty === "facil" ? 3 : difficulty === "reto" ? 8 : 6;\n    deck = shuffle([...symbols.slice(0, pairCount), ...symbols.slice(0, pairCount)]); firstCard = null; lockBoard = false; matchedPairs = 0; turns = 0;
+    $("memory-grid").innerHTML = ""; $("memory-status").textContent = "Pulsa dos cartas para empezar."; $("memory-pairs").textContent = "Parejas: 0 de " + pairCount;
     deck.forEach((symbol, index) => {
       const button = document.createElement("button"); button.type = "button"; button.className = "memory-card"; button.dataset.symbol = symbol; button.dataset.index = String(index); button.textContent = "✳"; button.setAttribute("aria-label", "Carta " + (index + 1) + ", oculta");
       button.addEventListener("click", () => flipCard(button)); $("memory-grid").appendChild(button);
@@ -40,8 +74,8 @@
     turns++; const second = button;
     if (firstCard.dataset.symbol === second.dataset.symbol) {
       [firstCard, second].forEach((card) => { card.classList.remove("revealed"); card.classList.add("matched"); card.disabled = true; }); matchedPairs++;
-      $("memory-pairs").textContent = "Parejas: " + matchedPairs + " de 6";
-      $("memory-status").textContent = matchedPairs === 6 ? "¡Habéis encontrado todas las parejas! ¡Bien hecho!" : "¡Pareja encontrada! Seguimos cuando quieras.";
+      $("memory-pairs").textContent = "Parejas: " + matchedPairs + " de " + pairCount;
+      $("memory-status").textContent = matchedPairs === pairCount ? "¡Habéis encontrado todas las parejas! ¡Bien hecho!" : "¡Pareja encontrada! Seguimos cuando quieras.";
       firstCard = null;
     } else {
       lockBoard = true; $("memory-status").textContent = "No pasa nada. Vamos a probar con otras cartas.";
@@ -77,7 +111,7 @@
   $("proverb-next").addEventListener("click", () => { proverbIndex++; showProverb(); }); showProverb();
 
   // Juego 3: cadena de palabras. Se comprueba la letra inicial, no el diccionario.
-  let currentWord = "MESA", wordHistory = ["MESA"];
+  let currentWord = "MESA", wordHistory = ["MESA"];\n  function resetWordGame() { currentWord = difficulty === "facil" ? "CASA" : difficulty === "reto" ? "AZAHAR" : "MESA"; wordHistory = [currentWord]; $("word-feedback").textContent = "Empezamos de nuevo con " + currentWord + "."; renderWord(); }
   function renderWord() { $("word-current").textContent = currentWord; $("word-prompt").textContent = "Busca una palabra que empiece por " + currentWord.slice(-1).toLocaleUpperCase("es") + "."; $("word-history").innerHTML = ""; wordHistory.forEach((word) => { const chip = document.createElement("span"); chip.className = "word-chip"; chip.textContent = word; $("word-history").appendChild(chip); }); }
   $("word-form").addEventListener("submit", (event) => {
     event.preventDefault(); const raw = $("word-input").value.trim(); const word = normalize(raw); const required = normalize(currentWord.slice(-1));
@@ -86,7 +120,7 @@
     if (wordHistory.some((used) => normalize(used) === word)) { $("word-feedback").textContent = "Ya hemos usado esa palabra. ¿Se te ocurre otra?"; return; }
     currentWord = raw.toLocaleUpperCase("es"); wordHistory.push(currentWord); $("word-input").value = ""; $("word-feedback").textContent = "¡Buena palabra! Ahora toca empezar por " + currentWord.slice(-1) + "."; renderWord();
   });
-  $("word-reset").addEventListener("click", () => { currentWord = "MESA"; wordHistory = ["MESA"]; $("word-feedback").textContent = "Empezamos de nuevo con MESA."; renderWord(); }); renderWord();
+  $("word-reset").addEventListener("click", () => { resetWordGame(); }); renderWord();
 
   // Juego 4: pistas musicales descriptivas; no incluye letras ni grabaciones.
   const songs = [
@@ -152,6 +186,11 @@
     ["VIAJES","¿Qué lugar te gustaría volver a visitar, aunque sea en recuerdos?"],
     ["SABORES","¿Qué olor de cocina te resulta especialmente familiar?"],
     ["FIESTAS","¿Qué canción o baile recuerdas de las fiestas del pueblo?"],
+    ["GRAN CANARIA","¿Hay algún rincón de Gran Canaria al que te guste volver?"],
+    ["GASTRONOMÍA CANARIA","¿Qué plato canario te recuerda a reuniones familiares?"],
+    ["MÚSICA CANARIA","¿Has escuchado tocar el timple en alguna fiesta o reunión?"],
+    ["TRADICIONES","¿Recuerdas alguna romería, fiesta o celebración de tu barrio?"],
+    ["PAISAJES","¿Qué paisaje de las islas te parece especialmente bonito?"],
     ["NUEVOS RECUERDOS","¿Qué te gustaría hacer esta semana por puro gusto?"]
   ];
   let promptDeck = shuffle(prompts), promptIndex = 0, favouritePrompts = new Set();
