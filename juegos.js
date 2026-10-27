@@ -121,6 +121,38 @@
     {q:"A falta de pan…",a:["buenas son tortas","bueno es el queso","mejor una sopa"],correct:0},
     {q:"Perro ladrador…",a:["poco mordedor","mucho soñador","buen cuidador"],correct:0}
   ];
+  proverbs.push(
+    {q:"A buen hambre…",a:["no hay pan duro","le sobra el postre","se cena tarde"],correct:0},
+    {q:"Cuando el río suena…",a:["agua lleva","se seca pronto","hay peces cantando"],correct:0},
+    {q:"Más sabe el diablo por viejo…",a:["que por diablo","que por madrugar","que por viajar"],correct:0},
+    {q:"Dime con quién andas…",a:["y te diré quién eres","y te diré dónde vives","y te invito a cenar"],correct:0},
+    {q:"Ojos que no ven…",a:["corazón que no siente","pies que no caminan","manos que no tocan"],correct:0},
+    {q:"A palabras necias…",a:["oídos sordos","respuesta larga","puertas abiertas"],correct:0},
+    {q:"El que mucho abarca…",a:["poco aprieta","mucho descansa","todo lo guarda"],correct:0},
+    {q:"Más vale tarde…",a:["que nunca","que mañana","que en invierno"],correct:0},
+    {q:"No hay mal que por bien…",a:["no venga","no se cuente","no se duerma"],correct:0},
+    {q:"En casa del herrero…",a:["cuchillo de palo","martillo de oro","puerta de hierro"],correct:0},
+    {q:"A río revuelto…",a:["ganancia de pescadores","paseo de caminantes","canción de pastores"],correct:0},
+    {q:"Cada maestrillo…",a:["tiene su librillo","tiene su sombrero","tiene su jardín"],correct:0},
+    {q:"Cría cuervos…",a:["y te sacarán los ojos","y cantarán al alba","y cuidarán la casa"],correct:0},
+    {q:"Quien mucho habla…",a:["mucho yerra","mucho camina","poco cocina"],correct:0},
+    {q:"A la tercera…",a:["va la vencida","llega la primavera","se acaba el camino"],correct:0},
+    {q:"De noche, todos los gatos…",a:["son pardos","son blancos","duermen de pie"],correct:0},
+    {q:"El hábito no hace…",a:["al monje","al vecino","al jardinero"],correct:0},
+    {q:"Más vale prevenir…",a:["que curar","que esperar sentado","que salir temprano"],correct:0},
+    {q:"Quien canta…",a:["su mal espanta","su casa levanta","su mesa recoge"],correct:0},
+    {q:"Agua que no has de beber…",a:["déjala correr","guárdala en casa","mézclala con miel"],correct:0},
+    {q:"A cada cerdo…",a:["le llega su San Martín","le llega su verano","le llega su sombrero"],correct:0},
+    {q:"Zapatero…",a:["a tus zapatos","a tu ventana","a tu jardín"],correct:0},
+    {q:"La avaricia rompe…",a:["el saco","la ventana","la cuchara"],correct:0},
+    {q:"Quien espera…",a:["desespera","siempre vuela","nunca descansa"],correct:0},
+    {q:"Por la boca…",a:["muere el pez","canta el gallo","sale el sol"],correct:0},
+    {q:"A grandes males…",a:["grandes remedios","grandes zapatos","grandes ventanas"],correct:0},
+    {q:"El tiempo pone a cada uno…",a:["en su lugar","en su cocina","en su camino al mar"],correct:0},
+    {q:"Donde hubo fuego…",a:["cenizas quedan","llueve en verano","crecen manzanos"],correct:0},
+    {q:"Un grano no hace…",a:["granero","verano","camino"],correct:0},
+    {q:"Quien no arriesga…",a:["no gana","no desayuna","no canta"],correct:0}
+  );
   let proverbDeck = shuffle(proverbs), proverbIndex = 0;
   function showProverb() {
     if (proverbIndex >= proverbDeck.length) { proverbDeck = shuffle(proverbs); proverbIndex = 0; }
@@ -155,6 +187,23 @@
     {clue:"Una canción tradicional muy vinculada a Asturias, que también se canta en reuniones y celebraciones.",a:["Asturias, patria querida","Granada","La bamba"],correct:0},
     {clue:"Una canción festiva que se hizo mundialmente conocida por su baile con pasos de brazos y caderas.",a:["La Macarena","Volare","Resistiré"],correct:0}
   ];
+  songs.push(
+    {clue:"Un bolero romántico cuyo título pide un beso y se ha interpretado en muchos países.",a:["Bésame mucho","La bamba","Valencia"],correct:0},
+    {clue:"Una canción muy conocida de los años sesenta que invita a resistir y se convirtió en himno de ánimo.",a:["Resistiré","Volare","La Tarara"],correct:0},
+    {clue:"Una canción española asociada a una artista conocida como la chica ye-yé.",a:["La chica ye-yé","Granada","Clavelitos"],correct:0},
+    {clue:"Un tema tradicional que menciona una región del norte de España y se canta en celebraciones.",a:["Asturias, patria querida","Malagueña salerosa","La Macarena"],correct:0},
+    {clue:"Una canción popular infantil que cuenta la historia de una vaca de color lechero.",a:["La vaca lechera","Tengo una muñeca vestida de azul","El patio de mi casa"],correct:0},
+    {clue:"Una canción tradicional que empieza hablando de una tarara y se canta en distintas versiones.",a:["La Tarara","Volare","Valencia"],correct:0},
+    {clue:"Un pasodoble muy ligado a Andalucía y a una ciudad famosa por la Alhambra.",a:["Granada","Zaragoza","La Macarena"],correct:0},
+    {clue:"Una canción festiva con un baile de palmas que se hizo famosa en todo el mundo en los años noventa.",a:["La Macarena","Bésame mucho","Resistiré"],correct:0},
+    {clue:"Una canción tradicional de corro que habla de un patio y de juegos infantiles.",a:["El patio de mi casa","Volare","Valencia"],correct:0},
+    {clue:"Una canción de tono alegre muy asociada a fiestas y reuniones, cuyo título es también un nombre de flor.",a:["Clavelitos","La Tarara","Asturias, patria querida"],correct:0},
+    {clue:"Una canción popular mexicana que suele cantarse en fiestas y tiene un ritmo muy reconocible.",a:["La bamba","Valencia","Tengo una muñeca vestida de azul"],correct:0},
+    {clue:"Una canción tradicional española que habla de una muñeca vestida de azul.",a:["Tengo una muñeca vestida de azul","Resistiré","Granada"],correct:0},
+    {clue:"Una canción conocida por su estribillo sobre una ciudad mediterránea española.",a:["Valencia","La Macarena","La Tarara"],correct:0},
+    {clue:"Una canción de cumpleaños que muchas personas recuerdan de reuniones familiares.",a:["Cumpleaños feliz","Volare","Clavelitos"],correct:0},
+    {clue:"Una canción tradicional canaria puede escucharse en parrandas junto a instrumentos como el timple. ¿Qué tipo de música es?",a:["Música folclórica canaria","Ópera italiana exclusivamente","Música electrónica de discoteca"],correct:0}
+  );
   let songDeck = shuffle(songs), songIndex = 0;
   function showSong() {
     if (songIndex >= songDeck.length) { songDeck = shuffle(songs); songIndex = 0; }
@@ -217,6 +266,48 @@
     ["PAISAJES","¿Qué paisaje de las islas te parece especialmente bonito?"],
     ["NUEVOS RECUERDOS","¿Qué te gustaría hacer esta semana por puro gusto?"]
   ];
+  prompts.push(
+    ["INFANCIA","¿Qué juego te gustaba más en el recreo?"],
+    ["INFANCIA","¿Recuerdas cómo era la casa donde creciste?"],
+    ["ESCUELA","¿Qué asignatura o actividad disfrutabas en la escuela?"],
+    ["AMISTAD","¿Cómo conociste a una amistad que conservas con cariño?"],
+    ["TRABAJO","¿Cuál fue el primer trabajo que recuerdas?"],
+    ["TRABAJO","¿Qué habilidad aprendiste trabajando y todavía te sirve?"],
+    ["FAMILIA","¿Qué reunión familiar recuerdas con una sonrisa?"],
+    ["FAMILIA","¿Qué receta se preparaba en casa en ocasiones especiales?"],
+    ["COCINA","¿Te gustaba cocinar o preferías ayudar poniendo la mesa?"],
+    ["COCINA","¿Qué fruta o dulce esperabas con ganas cuando eras pequeño?"],
+    ["MÚSICA","¿Qué canción te anima cuando la escuchas?"],
+    ["MÚSICA","¿Había alguna canción que se cantara mucho en tu casa?"],
+    ["BAILE","¿Qué baile o música sonaba en las fiestas de tu juventud?"],
+    ["VACACIONES","¿Recuerdas alguna excursión que saliera especialmente bien?"],
+    ["VACACIONES","¿Eras más de playa, campo o paseos por el pueblo?"],
+    ["BARRIO","¿Qué lugar de tu barrio ha cambiado mucho con los años?"],
+    ["BARRIO","¿Había alguna tienda o mercado al que te gustara ir?"],
+    ["TRADICIONES","¿Qué tradición te gustaría que conocieran las nuevas generaciones?"],
+    ["CANARIAS","¿Qué paisaje de Canarias te gustaría enseñar a alguien que viene de visita?"],
+    ["CANARIAS","¿Qué plato canario recomendarías a una persona que visita las islas?"],
+    ["CANARIAS","¿Recuerdas alguna fiesta popular de tu municipio?"],
+    ["NATURALEZA","¿Qué sonido de la naturaleza te resulta agradable?"],
+    ["NATURALEZA","¿Qué planta, árbol o flor reconoces enseguida?"],
+    ["OBJETOS","¿Qué objeto cotidiano te recuerda a otra época?"],
+    ["OFICIOS","¿Qué oficio te habría gustado aprender?"],
+    ["CELEBRACIONES","¿Cómo solíais celebrar los cumpleaños en casa?"],
+    ["PEQUEÑOS PLACERES","¿Qué momento del día disfrutas más?"],
+    ["PEQUEÑOS PLACERES","¿Qué actividad sencilla te gustaría hacer más a menudo?"],
+    ["HISTORIAS","¿Quién de tu familia contaba buenas historias?"],
+    ["HISTORIAS","¿Qué consejo de una persona querida recuerdas con cariño?"],
+    ["AMISTAD","¿Qué detalle pequeño puede alegrarle el día a otra persona?"],
+    ["VIAJES","¿Qué lugar cercano te gustaría volver a visitar?"],
+    ["SABORES","¿Qué aroma te recuerda a una celebración o a una persona querida?"],
+    ["FOTOGRAFÍAS","¿Qué te gusta mirar en una fotografía antigua?"],
+    ["JUEGOS","¿Jugabas a las cartas, al dominó o a algún otro juego?"],
+    ["RUTINAS","¿Qué costumbre sencilla te ayuda a empezar bien el día?"],
+    ["MASCOTAS","¿Tuviste algún animal al que recuerdes con cariño?"],
+    ["ESTACIONES","¿Qué es lo que más te gusta de la primavera o del verano?"],
+    ["OFICIOS","¿Qué trabajo de tu familia te parecía curioso cuando eras pequeño?"],
+    ["NUEVOS RECUERDOS","¿Qué cosa nueva te gustaría probar, aunque sea pequeña?"]
+  );
   let promptDeck = shuffle(prompts), promptIndex = 0, favouritePrompts = new Set();
   function showPrompt() { if (promptIndex >= promptDeck.length) { promptDeck = shuffle(prompts); promptIndex = 0; } const item = promptDeck[promptIndex]; $("memory-category").textContent = item[0]; $("memory-prompt").textContent = item[1]; $("prompt-feedback").textContent = ""; $("prompt-fav").textContent = favouritePrompts.has(item[1]) ? "♥ Pregunta guardada en esta sesión" : "♡ Me gusta esta pregunta"; }
   $("prompt-next").addEventListener("click", () => { promptIndex++; showPrompt(); });
@@ -238,6 +329,26 @@
     {q:"¿Qué tipo de leche se usa tradicionalmente en muchos quesos canarios?",a:["Leche de cabra","Leche de reno","Leche de búfala exclusivamente"],correct:0},
     {q:"¿Qué instrumento puede acompañar una isa canaria?",a:["Timple","Didgeridoo","Balalaica"],correct:0}
   ];
+  canaryQuestions.push(
+    {q:"¿Qué isla canaria es conocida por el Parque Nacional del Teide?",a:["Tenerife","Lanzarote","Fuerteventura"],correct:0},
+    {q:"¿Qué isla es famosa por el Parque Nacional de Timanfaya?",a:["Lanzarote","La Gomera","Gran Canaria"],correct:0},
+    {q:"¿Cómo se llama el silbo tradicional de La Gomera?",a:["Silbo gomero","Canto del drago","Eco del Teide"],correct:0},
+    {q:"¿Qué producto típico canario se elabora con leche y puede tener distintas curaciones?",a:["Queso","Galleta de arroz exclusivamente","Chocolate de menta"],correct:0},
+    {q:"¿Qué árbol emblemático aparece en el paisaje canario y tiene una savia rojiza?",a:["Drago","Abedul","Castaño de Indias"],correct:0},
+    {q:"¿Qué isla es conocida por sus paisajes volcánicos y playas de arena clara?",a:["Fuerteventura","La Gomera","El Hierro"],correct:0},
+    {q:"¿Qué nombre recibe una vivienda tradicional excavada en roca en algunos lugares de Canarias?",a:["Casa cueva","Casa flotante","Casa de hielo"],correct:0},
+    {q:"¿Qué baile tradicional canario se interpreta en fiestas populares?",a:["La isa","La polca bávara exclusivamente","El vals vienés únicamente"],correct:0},
+    {q:"¿Qué se suele poner en el potaje canario?",a:["Verduras y legumbres","Solo chocolate","Fruta congelada"],correct:0},
+    {q:"¿Qué isla es conocida por el Parque Nacional de Garajonay?",a:["La Gomera","La Palma","Lanzarote"],correct:0},
+    {q:"¿Qué se celebra en muchas localidades canarias con carretas, música y vestimenta tradicional?",a:["Una romería","Una regata olímpica","Una feria de nieve"],correct:0},
+    {q:"¿Cuál de estas islas forma parte de la provincia de Las Palmas?",a:["Gran Canaria","Tenerife","La Palma"],correct:0},
+    {q:"¿Qué material volcánico oscuro es común en muchas playas canarias?",a:["Arena negra","Nieve permanente","Hielo azul"],correct:0},
+    {q:"¿Qué bebida tradicional canaria se prepara con café, leche condensada y un toque de licor, según la versión?",a:["Barraquito","Horchata valenciana","Sidra asturiana"],correct:0},
+    {q:"¿Qué animal marino puede avistarse en aguas de Canarias?",a:["Delfín","Pingüino emperador salvaje habitual","Morsa ártica"],correct:0},
+    {q:"¿Qué isla es conocida por el observatorio del Roque de los Muchachos?",a:["La Palma","Fuerteventura","Gran Canaria"],correct:0},
+    {q:"¿Qué oficio tradicional está relacionado con cuidar colmenas y recoger miel?",a:["Apicultura","Alfarería","Carpintería naval"],correct:0},
+    {q:"¿Qué se suele usar para acompañar el gofio escaldado?",a:["Caldo","Helado de vainilla obligatoriamente","Sirope de chocolate"],correct:0}
+  );
   let canaryDeck = shuffle(canaryQuestions), canaryIndex = 0;
   function showCanaryQuestion() {
     if (canaryIndex >= canaryDeck.length) { canaryDeck = shuffle(canaryQuestions); canaryIndex = 0; }
