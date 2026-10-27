@@ -69,7 +69,7 @@
   const config = window.MEMORIA_VIVA_CONFIG || {};
   document.querySelectorAll(".js-whatsapp").forEach((link) => {
     const number = String(config.whatsappNumber || "").replace(/\D/g, "");
-    const message = link.dataset.message || "Hola, quiero información sobre Memoria Viva Maspalomas.";
+    const message = link.dataset.message || "Hola, quiero información sobre Memoria Viva.";
     if (number.length >= 8) { link.href = `https://wa.me/${number}?text=${encodeURIComponent(message)}`; link.target = "_blank"; link.rel = "noopener noreferrer"; }
   });
   const menuToggle = document.querySelector(".menu-toggle"), nav = $("nav-menu");
