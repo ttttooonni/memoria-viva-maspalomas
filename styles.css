@@ -21,3 +21,43 @@
 .welcome-reassurance span{font-size:20px;color:#a35e45}
 @media(max-width:720px){.welcome-hero{padding:43px 0 50px}.welcome-inner h1{font-size:clamp(39px,10vw,54px);letter-spacing:-1.5px}.welcome-lead{font-size:16px;margin:17px auto 25px}.welcome-question{font-size:19px}.welcome-options{grid-template-columns:1fr;gap:12px}.welcome-option{min-height:94px;padding:16px;gap:14px;border-radius:17px}.welcome-icon{flex-basis:52px;width:52px;height:52px;border-radius:15px;font-size:26px}.welcome-option-copy strong{font-size:19px}.welcome-option-copy small{font-size:13px}.welcome-reassurance{font-size:12px;line-height:1.6;align-items:flex-start}}
 @media(prefers-reduced-motion:reduce){.welcome-option{transition:none}}
+
+
+/* Ajustes de lectura y navegación móvil: tarjetas claramente separadas */
+.welcome-hero{background:var(--cream);padding:30px 0 54px;overflow:visible}
+.welcome-inner{max-width:820px}
+.welcome-inner>.eyebrow{justify-content:flex-start;margin-bottom:24px}
+.welcome-inner h1{text-align:left;font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;font-weight:800;letter-spacing:-1.7px;line-height:1.12;font-size:clamp(36px,5.5vw,58px);margin:0;color:var(--pine-dark)}
+.welcome-inner h1 em{color:var(--pine);font-style:italic}
+.welcome-lead{max-width:760px;text-align:left;margin:22px 0 26px;color:var(--ink);font-size:clamp(17px,2vw,20px);line-height:1.75}
+.welcome-question{text-align:left;font-size:clamp(19px,2.5vw,23px);font-weight:750;margin:0 0 17px}
+.welcome-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:0}
+.welcome-options>.welcome-option{display:flex;align-items:center;gap:14px;min-width:0;min-height:104px;padding:17px 18px;background:var(--paper);border:1px solid var(--line);border-radius:18px;text-decoration:none!important;box-shadow:0 5px 18px rgba(30,66,57,.055);color:var(--pine-dark);white-space:normal;overflow-wrap:anywhere}
+.welcome-options>.welcome-option:hover,.welcome-options>.welcome-option:focus-visible{border-color:#91b3a0;box-shadow:0 8px 24px rgba(30,66,57,.10);transform:translateY(-1px)}
+.welcome-option-copy{display:block;flex:1;min-width:0}
+.welcome-option-copy strong{display:block;font-family:inherit;font-size:18px;line-height:1.35;font-weight:800;text-decoration:none}
+.welcome-option-copy small{display:block;margin-top:5px;color:var(--muted);font-size:13px;line-height:1.5;text-decoration:none}
+.welcome-icon{flex:0 0 48px;width:48px;height:48px;border-radius:14px;font-size:25px}
+.welcome-arrow{font-size:23px}
+.welcome-reassurance{justify-content:flex-start;margin:22px 0 0;text-align:left;font-size:13px;line-height:1.6}
+.services-section{padding-top:64px}
+.section-heading{margin-bottom:34px}
+.floating-whatsapp{right:16px;bottom:16px;padding:11px 15px;font-size:12px;box-shadow:0 5px 18px rgba(18,64,44,.18)}
+@media(max-width:720px){
+ .welcome-hero{padding:26px 0 38px}
+ .welcome-inner>.eyebrow{justify-content:flex-start;margin-bottom:20px;font-size:11px;letter-spacing:1.2px}
+ .welcome-inner h1{font-size:clamp(35px,9vw,47px);letter-spacing:-1.2px;line-height:1.15}
+ .welcome-lead{font-size:17px;line-height:1.7;margin:18px 0 23px}
+ .welcome-question{font-size:20px;margin-bottom:15px}
+ .welcome-options{grid-template-columns:minmax(0,1fr);gap:11px}
+ .welcome-options>.welcome-option{min-height:88px;padding:14px 15px;gap:13px;border-radius:16px}
+ .welcome-icon{flex-basis:46px;width:46px;height:46px;font-size:24px}
+ .welcome-option-copy strong{font-size:17px;line-height:1.35}
+ .welcome-option-copy small{font-size:13px;line-height:1.4;margin-top:4px}
+ .welcome-arrow{font-size:22px}
+ .welcome-reassurance{font-size:12px;margin-top:19px}
+ .services-section{padding-top:48px}
+ .section-heading .eyebrow{justify-content:center}
+ .section-heading h2{font-size:clamp(34px,8vw,42px);letter-spacing:-1px;line-height:1.12}
+ .floating-whatsapp{right:12px;bottom:12px;padding:10px 13px}
+}
