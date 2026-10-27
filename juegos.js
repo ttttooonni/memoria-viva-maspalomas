@@ -381,9 +381,45 @@
   function makePromptDeck(){const allowed=new Set([...selectedInterests].flatMap((key)=>interestMap[key]||[]));const filtered=prompts.filter((item)=>allowed.has(item[0]));return shuffle(filtered.length?filtered:prompts);}
   promptDeck = makePromptDeck(); promptIndex = 0; showPrompt();
   interestButtons.forEach((button)=>button.addEventListener("click",()=>{const key=button.dataset.interest;if(selectedInterests.has(key))selectedInterests.delete(key);else selectedInterests.add(key);if(!selectedInterests.size)selectedInterests.add(key);interestButtons.forEach((item)=>{const active=selectedInterests.has(item.dataset.interest);item.classList.toggle("active",active);item.setAttribute("aria-pressed",String(active));});promptDeck=makePromptDeck();promptIndex=0;showPrompt();$("prompt-feedback").textContent="Preguntas adaptadas a tus temas favoritos."; }));
+  const gameExplanations = {
+    "game-parejas":"Vamos a jugar a las parejas. Toca una carta para verla y después toca otra. Si son iguales, has encontrado una pareja. Si son distintas, no pasa nada: observa dónde están y prueba de nuevo. Puedes tomarte todo el tiempo que necesites.",
+    "game-refranes":"Vamos con los refranes de toda la vida. Lee o escucha el comienzo y elige cómo termina. Si en tu casa se decía de otra manera, esa variante también tiene su gracia. Aquí no venimos a examinarnos, sino a pasar un buen rato.",
+    "game-palabras":"Jugamos a encadenar palabras. Mira la última letra de la palabra que aparece y piensa otra que empiece por esa letra. Puedes escribirla o decirla en voz alta con alguien que te acompañe. Si te quedas en blanco, pide una pista y seguimos.",
+    "game-canciones":"A ver si reconocemos canciones conocidas. Escucha la pista y elige el título que te suene. Después podéis tararear la melodía o contar dónde la escuchabais. No reproducimos la canción: las pistas sirven para despertar recuerdos.",
+    "game-cambios":"En este juego vamos a observar una pequeña escena. Mírala con calma y pulsa cuando estés preparado. Después cambiaremos un objeto y podrás intentar descubrir qué ha cambiado. Sin prisa y sin presión.",
+    "game-recuerdos":"Esta actividad es para conversar. Escucha la pregunta y comparte lo que te apetezca, si te apetece. También puedes pasar a otra pregunta, hablar de un recuerdo inventado o simplemente escuchar. Tú decides qué quieres contar.",
+    "game-canarias":"Damos un paseo por Canarias con preguntas sobre nuestras islas, sus comidas, sus paisajes y sus tradiciones. Elige la respuesta que te parezca. Y si conoces una historia distinta, ¡cuéntala! Lo importante es disfrutar y compartir.",
+    "game-fotografias":"Vamos a mirar una fotografía. Fíjate en los colores, las formas y los detalles. No hace falta saber dónde se hizo: puedes contar qué te recuerda o qué sensación te da. Cuando quieras, pasamos a otra imagen."
+  };
   function stopVoice(){if("speechSynthesis" in window)window.speechSynthesis.cancel();}
-  function speakText(text,feedback){if(!("speechSynthesis" in window)||!text.trim()){if(feedback)feedback.textContent="La lectura en voz alta no está disponible en este navegador. Puedes leer el texto o pedir que te lo lean.";return;}stopVoice();const utterance=new SpeechSynthesisUtterance(text);utterance.lang="es-ES";utterance.rate=0.88;utterance.pitch=1;utterance.onstart=()=>{if(feedback)feedback.textContent="Leyendo en voz alta…";};utterance.onend=()=>{if(feedback)feedback.textContent="Lectura terminada.";};utterance.onerror=()=>{if(feedback)feedback.textContent="No se pudo iniciar la voz. Puedes intentarlo de nuevo.";};window.speechSynthesis.speak(utterance);}
-  function textForPanel(panel){const title=panel.querySelector("h3")?.textContent||"";const question=panel.querySelector("#proverb-question, #song-clue, #canary-question, #word-prompt, #scene-instruction, #memory-prompt, #photo-prompt")?.textContent||"";const extra=panel.querySelector("#photo-support")?.textContent||"";const options=[...panel.querySelectorAll(".quiz-option:not(:disabled), .scene-answer:not(:disabled)")].map((b)=>b.textContent).join(". ");const scene=panel.querySelector("#object-scene")?.textContent||"";return[title,question,extra,options,scene].filter(Boolean).join(". ");}
+  function chooseSpanishVoice(utterance){
+    if(!("speechSynthesis" in window))return;
+    const voices=window.speechSynthesis.getVoices();
+    // Los navegadores no suelen ofrecer una voz canaria específica; preferimos español de España.
+    const preferred=voices.find((voice)=>/es-ES/i.test(voice.lang)&&/female|femenina|monica|elena|lucia|lucía/i.test(voice.name))
+      || voices.find((voice)=>/es-ES/i.test(voice.lang))
+      || voices.find((voice)=>/^es/i.test(voice.lang));
+    if(preferred)utterance.voice=preferred;
+  }
+  function speakText(text,feedback){
+    if(!("speechSynthesis" in window)||!text.trim()){if(feedback)feedback.textContent="La lectura en voz alta no está disponible en este navegador. Puedes leer el texto o pedir que te lo lean.";return;}
+    stopVoice();
+    const utterance=new SpeechSynthesisUtterance(text);
+    utterance.lang="es-ES";utterance.rate=0.82;utterance.pitch=1.02;chooseSpanishVoice(utterance);
+    utterance.onstart=()=>{if(feedback)feedback.textContent="Leyendo en voz alta…";};
+    utterance.onend=()=>{if(feedback)feedback.textContent="Lectura terminada. Puedes volver a escucharla cuando quieras.";};
+    utterance.onerror=()=>{if(feedback)feedback.textContent="No se pudo iniciar la voz. Comprueba que el dispositivo tenga una voz en español instalada.";};
+    window.speechSynthesis.speak(utterance);
+  }
+  function textForPanel(panel){
+    const title=panel.querySelector("h3")?.textContent||"";
+    const explanation=gameExplanations[panel.id]||"";
+    const question=panel.querySelector("#proverb-question, #song-clue, #canary-question, #word-prompt, #scene-instruction, #memory-prompt, #photo-prompt")?.textContent||"";
+    const extra=panel.querySelector("#photo-support, #prompt-support")?.textContent||"";
+    const options=[...panel.querySelectorAll(".quiz-option:not(:disabled), .scene-answer:not(:disabled)")].map((b)=>b.textContent).join(". ");
+    const scene=panel.querySelector("#object-scene")?.textContent||"";
+    return[title,explanation,question,extra,options,scene].filter(Boolean).join(". ");
+  }
   function giveHint(panel,feedback){const id=panel.id;if(id==="game-palabras"){const letter=$("word-current")?.textContent.slice(-1)||"A";feedback.textContent="Pista: piensa en una palabra cotidiana que empiece por «"+letter+"». También puedes decirla en voz alta en vez de escribirla.";return;}if(id==="game-recuerdos"){feedback.textContent="Pista: puedes empezar por una persona, un lugar, un olor o una canción. También puedes pasar a otra pregunta; no tienes que contar nada personal.";return;}if(id==="game-fotografias"){feedback.textContent="Pista: fíjate primero en los colores y las formas. Después puedes hablar de un lugar parecido, de un paseo o de lo que te hace sentir la imagen.";return;}if(id==="game-parejas"){feedback.textContent="Pista: empieza con dos cartas. Si no coinciden, observa dónde están y vuelve a probar sin prisa.";return;}if(id==="game-cambios"){feedback.textContent="Pista: compara los objetos uno a uno. Puedes leer sus nombres en voz alta y tomarte todo el tiempo que quieras.";return;}const wrong=[...panel.querySelectorAll(".quiz-option:not(:disabled)")].find((button)=>button.dataset.correct==="false");if(wrong){wrong.disabled=true;wrong.classList.add("hinted-option");feedback.textContent="Aquí tienes una pista: hemos apartado una opción que no era la respuesta. Puedes elegir entre las restantes.";}else feedback.textContent="Pista: lee las opciones en voz alta y elige la que te resulte más familiar. No hay prisa.";}
   function addAssistiveTools(){document.querySelectorAll(".game-panel").forEach((panel)=>{if(panel.querySelector(".assistive-tools"))return;const tools=document.createElement("div");tools.className="assistive-tools";const listen=document.createElement("button");listen.type="button";listen.className="assistive-button";listen.textContent="🔊 Escuchar";listen.setAttribute("aria-label","Leer en voz alta el contenido de este juego");const hint=document.createElement("button");hint.type="button";hint.className="assistive-button";hint.textContent="💡 Dar una pista";const stop=document.createElement("button");stop.type="button";stop.className="assistive-button";stop.textContent="■ Parar voz";const feedback=document.createElement("p");feedback.className="assistive-feedback";feedback.setAttribute("role","status");feedback.setAttribute("aria-live","polite");listen.addEventListener("click",()=>speakText(textForPanel(panel),feedback));stop.addEventListener("click",()=>{stopVoice();feedback.textContent="Lectura detenida.";});hint.addEventListener("click",()=>giveHint(panel,feedback));tools.append(listen,hint,stop,feedback);const target=panel.querySelector(".quiz-card, .word-card, .scene-card, .memory-prompt-card, .photo-question");if(target)target.appendChild(tools);else panel.appendChild(tools);});}
   addAssistiveTools();
