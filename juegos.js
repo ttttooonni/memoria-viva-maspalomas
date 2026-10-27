@@ -51,6 +51,20 @@
     tabs.forEach((item) => { const active = item === tab; item.classList.toggle("active", active); item.setAttribute("aria-pressed", String(active)); });
     panels.forEach((panel) => panel.classList.toggle("active", panel.id === "game-" + tab.dataset.game));
   }));
+  function activateGameFromHash() {
+    const gameId = window.location.hash.match(/^#game-(parejas|refranes|palabras|canciones|cambios|recuerdos|canarias|fotografias)$/);
+    if (!gameId) return;
+    const tab = tabs.find((item) => item.dataset.game === gameId[1]);
+    if (tab) {
+      tab.click();
+      window.setTimeout(() => document.getElementById("game-" + gameId[1])?.scrollIntoView({
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+        block: "start"
+      }), 80);
+    }
+  }
+  window.addEventListener("hashchange", activateGameFromHash);
+  activateGameFromHash();
   const year = $("year"); if (year) year.textContent = new Date().getFullYear();
   const config = window.MEMORIA_VIVA_CONFIG || {};
   document.querySelectorAll(".js-whatsapp").forEach((link) => {
