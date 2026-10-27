@@ -1,4 +1,4 @@
-# Memoria Viva Maspalomas — web estática
+# Memoria Viva — web estática
 
 Web responsive para presentar actividades personalizadas de envejecimiento activo a domicilio, recibir consultas y solicitar cita por WhatsApp.
 
@@ -10,6 +10,12 @@ Web responsive para presentar actividades personalizadas de envejecimiento activ
 
 ## Configuración actual
 El WhatsApp de contacto está configurado con el número facilitado: **692 27 15 55**. El enlace internacional se genera como `https://wa.me/34692271555`.
+
+## Próxima línea de producto para centros
+- Probar las actividades con profesionales de centros de día, residencias y asociaciones.
+- Preparar un modo de sesión guiada, actividades por duración y fichas imprimibles.
+- No incluir todavía cuentas, historiales personales ni datos de salud.
+- Validar accesibilidad, facilidad de uso y utilidad real con equipos profesionales antes de ofrecerlo comercialmente.
 
 ## Antes de publicar comercialmente
 1. Completar los datos legales pendientes en `privacidad.html` y `aviso-legal.html`.
