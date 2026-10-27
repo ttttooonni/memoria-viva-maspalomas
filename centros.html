@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#24564e">
+<meta name="description" content="Memoria Viva: actividades recreativas accesibles para dinamizar grupos y compartir historias en centros de día, residencias y asociaciones.">
+<title>Memoria Viva | Actividades para centros</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+<script src="site-config.js" defer></script><script src="script.js" defer></script>
+<style>
+.centres-hero{padding:clamp(3rem,7vw,6rem) 0;background:linear-gradient(135deg,#e9f2e7,#fff3dc);overflow:hidden}
+.centres-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:2rem;align-items:center}
+.centres-hero h1{font-size:clamp(2.5rem,5vw,4.6rem);line-height:1.04;letter-spacing:-.04em;margin:.6rem 0 1.2rem;color:#17483e}
+.centres-hero h1 em{font-style:normal;color:#b76d4f}
+.centres-hero p{font-size:1.12rem;line-height:1.7;max-width:650px}
+.centres-visual{background:#1d5b4b;color:#fff;border-radius:28px;padding:2rem;box-shadow:0 18px 45px #17483e20}
+.session-card{background:#fff;color:#17483e;border-radius:18px;padding:1rem;margin:.75rem 0;display:flex;gap:1rem;align-items:center}
+.session-icon{font-size:1.8rem;background:#f6e5c6;border-radius:14px;padding:.7rem}
+.session-card small{display:block;color:#53665f;margin-top:.25rem}
+.centre-benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2rem}
+.centre-benefits article{border:1px solid #e3e9e2;border-radius:20px;padding:1.4rem;background:#fff}
+.centre-benefits h3{color:#17483e}
+.centre-steps{counter-reset:step;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.centre-steps article{background:#f5f3e9;padding:1.4rem;border-radius:18px}
+.centre-steps article:before{counter-increment:step;content:"0" counter(step);font-size:1.5rem;font-weight:800;color:#b76d4f}
+.centre-note{font-size:.92rem;opacity:.85;margin-top:1.5rem}
+@media(max-width:760px){.centres-grid{grid-template-columns:1fr}.centre-benefits,.centre-steps{grid-template-columns:1fr}.centres-visual{padding:1.2rem}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+<header class="site-header"><div class="container nav-wrap">
+<a class="brand" href="index.html" aria-label="Memoria Viva, inicio"><span class="brand-mark" aria-hidden="true">mv</span><span><strong>Memoria Viva</strong><small>JUGAR · RECORDAR · COMPARTIR</small></span></a>
+<button class="menu-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menú">☰</button>
+<nav id="nav-menu" class="nav-menu" aria-label="Navegación principal"><a href="index.html#servicios">Qué hacemos</a><a href="juegos.html">Probar juegos</a><a href="centros.html" aria-current="page">Para centros</a><a class="nav-cta js-whatsapp" href="#contacto" data-message="Hola, trabajo en un centro y me gustaría explorar una prueba piloto de Memoria Viva.">Proponer una prueba</a></nav>
+</div></header>
+<main id="contenido">
+<section class="centres-hero"><div class="container centres-grid"><div>
+<p class="eyebrow"><span class="eyebrow-dot"></span> Para centros de día, residencias y asociaciones</p>
+<h1>Actividades que<br><em>crean conexión.</em></h1>
+<p>Memoria Viva reúne juegos sencillos, conversación, fotografías y cultura canaria para ayudar a dinamizar momentos compartidos. Una propuesta visual, adaptable y pensada para acompañar —no sustituir— el trabajo del equipo profesional.</p>
+<div class="hero-actions"><a class="button button-primary" href="juegos.html">Probar las actividades <span aria-hidden="true">↗</span></a><a class="button button-secondary js-whatsapp" href="#contacto" data-message="Hola, me gustaría valorar Memoria Viva para nuestro centro.">Hablar sobre el centro</a></div>
+<p class="centre-note">En fase de validación: queremos escuchar primero a los equipos y comprobar qué les resulta realmente útil.</p>
+</div><div class="centres-visual" aria-label="Ejemplos de tipos de sesión">
+<p class="eyebrow light">IDEAS PARA UNA SESIÓN</p>
+<div class="session-card"><span class="session-icon">📷</span><div><strong>Fotografías que cuentan historias</strong><small>Mirar, elegir y conversar sin respuestas correctas.</small></div></div>
+<div class="session-card"><span class="session-icon">🌿</span><div><strong>Canarias, recuerdos vivos</strong><small>Lugares, música, gastronomía y tradiciones.</small></div></div>
+<div class="session-card"><span class="session-icon">🃏</span><div><strong>Juegos para compartir</strong><small>Propuestas cortas, con opciones de ayuda y pausa.</small></div></div>
+<div class="session-card"><span class="session-icon">💬</span><div><strong>Conversación en grupo</strong><small>Preguntas abiertas para favorecer la participación voluntaria.</small></div></div>
+</div></div></section>
+<section class="section"><div class="container"><div class="section-heading"><p class="eyebrow">Pensado para el día a día</p><h2>Útil para el equipo.<br><em>Agradable para las personas.</em></h2><p>No queremos añadir otra herramienta complicada. Queremos comprobar si puede ayudar a preparar actividades con menos esfuerzo y más opciones para adaptar cada sesión.</p></div>
+<div class="centre-benefits">
+<article><div class="service-icon sage" aria-hidden="true">◷</div><h3>Sesiones flexibles</h3><p>Actividades que se puedan elegir según el tiempo disponible, el tamaño del grupo y la energía del momento.</p></article>
+<article><div class="service-icon clay" aria-hidden="true">♿</div><h3>Accesibilidad</h3><p>Texto legible, controles claros, instrucciones sencillas, ritmo tranquilo y participación sin presión.</p></article>
+<article><div class="service-icon gold" aria-hidden="true">🌋</div><h3>Identidad canaria</h3><p>Contenidos cercanos sobre las islas, sus paisajes, canciones, sabores, palabras y costumbres.</p></article>
+</div></div></section>
+<section class="section process-section"><div class="container"><div class="section-heading"><p class="eyebrow">Cómo nos gustaría validarlo</p><h2>Primero escuchamos.<br><em>Después construimos.</em></h2><p>La versión para centros debe diseñarse con profesionales, no dar por hecho lo que necesitan.</p></div>
+<div class="centre-steps"><article><h3>Conversación breve</h3><p>Conocer el tipo de centro, las actividades habituales, los dispositivos disponibles y las barreras del equipo.</p></article><article><h3>Prueba acompañada</h3><p>Probar un pequeño conjunto de juegos con voluntarios, sin registrar datos personales ni información sanitaria.</p></article><article><h3>Mejoras basadas en uso real</h3><p>Recoger comentarios del personal y decidir qué funciones merecen construirse a continuación.</p></article></div>
+<p class="centre-note">Posibles funciones futuras, sujetas a validación: modo de sesión guiada, selección por duración y tema, fichas imprimibles y actividades para grupos. No se anuncian todavía como funciones disponibles.</p>
+</div></section>
+<section class="contact-section" id="contacto"><div class="container contact-grid"><div><p class="eyebrow light">¿Trabajas en un centro?</p><h2>Ayúdanos a crear<br>algo que sí se use.</h2><p>Nos gustaría conocer tus necesidades reales y explorar una prueba piloto sencilla.</p></div><div class="contact-card"><div class="contact-card-top"><span class="whatsapp-mark" aria-hidden="true">✆</span><div><strong>Hablemos de vuestro centro</strong><small>Sin compromiso de contratación</small></div></div><a class="button button-light js-whatsapp" href="#contacto" data-message="Hola, trabajo en un centro de día/residencia/asociación y me gustaría valorar una prueba piloto de Memoria Viva. El tipo de centro es: ">Proponer una prueba piloto <span aria-hidden="true">↗</span></a><p class="contact-small">No incluyas nombres de usuarios, informes ni datos personales en el primer mensaje.</p></div></div></section>
+</main>
+<footer class="site-footer"><div class="container footer-top"><a class="brand footer-brand" href="index.html"><span class="brand-mark" aria-hidden="true">mv</span><span><strong>Memoria Viva</strong><small>JUGAR · RECORDAR · COMPARTIR</small></span></a><div class="footer-links"><a href="privacidad.html">Privacidad</a><a href="aviso-legal.html">Aviso legal</a><a href="index.html#contacto">Contacto</a></div></div><div class="container footer-bottom"><p>© <span id="year"></span> Memoria Viva. Todos los derechos reservados.</p><p>Actividades recreativas y culturales, no sanitarias.</p></div></footer>
+<a class="floating-whatsapp js-whatsapp" href="#contacto" data-message="Hola, me gustaría conocer Memoria Viva para nuestro centro." aria-label="Contactar por WhatsApp">✆</a>
+</body></html>
