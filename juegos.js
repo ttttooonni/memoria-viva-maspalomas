@@ -39,6 +39,14 @@
     if (typeof newScene === "function") newScene();
   }));
   updateGuidance();
+  document.querySelectorAll("[data-shortcut]").forEach((link) => link.addEventListener("click", (event) => {
+    event.preventDefault();
+    const game = link.dataset.shortcut;
+    const tab = tabs.find((item) => item.dataset.game === game);
+    if (tab) tab.click();
+    const stage = document.querySelector(".game-stage");
+    if (stage) stage.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+  }));
   tabs.forEach((tab) => tab.addEventListener("click", () => {
     tabs.forEach((item) => { const active = item === tab; item.classList.toggle("active", active); item.setAttribute("aria-pressed", String(active)); });
     panels.forEach((panel) => panel.classList.toggle("active", panel.id === "game-" + tab.dataset.game));
