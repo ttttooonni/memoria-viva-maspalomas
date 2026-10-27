@@ -32,3 +32,20 @@ body.games-page .play-guidance{grid-column:1/-1;margin:0;color:#526b62;font-size
 body.games-page .interest-picker{grid-column:1/-1;border-top:1px solid #e1e7dc;padding-top:16px;display:flex;flex-direction:column;align-items:flex-start;gap:10px;min-width:0}
 body.games-page .interest-note{font-size:12px;line-height:1.5;color:#65786d;margin:0}
 @media(max-width:600px){body.games-page .play-settings{grid-template-columns:minmax(0,1fr);padding:16px;gap:17px}body.games-page .setting-label{font-size:14px}body.games-page .setting-options,body.games-page .interest-options{gap:8px}body.games-page .setting-button,body.games-page .interest-chip{font-size:14px;min-height:44px;padding:10px 13px}body.games-page .play-guidance,body.games-page .interest-picker{grid-column:auto}}
+
+/* Portada visual y accesos rápidos para familias y personas mayores */
+body.games-page .games-hero{background:linear-gradient(135deg,#e7eee6 0%,#f7f4e9 100%);padding:66px 0 58px}
+body.games-page .games-hero h1{max-width:850px;font-size:clamp(40px,6vw,68px);line-height:1.06;letter-spacing:-1.8px}
+body.games-page .games-hero-inner>p:not(.eyebrow){font-size:18px;line-height:1.75;max-width:720px;color:#486359}
+body.games-page .games-hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+body.games-page .games-hero-actions .button{min-height:50px;display:inline-flex;align-items:center;justify-content:center}
+body.games-page .games-heading h2{font-size:clamp(34px,4.5vw,48px)}
+body.games-page .activity-shortcuts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin:0 0 28px}
+body.games-page .activity-shortcuts a{display:flex;flex-direction:column;align-items:flex-start;gap:8px;min-height:145px;padding:19px 17px;text-decoration:none;border:1px solid #e0e7dd;border-radius:18px;background:#fffdf8;color:#24483f;box-shadow:0 5px 18px rgba(35,70,57,.04);transition:transform .16s,border-color .16s}
+body.games-page .activity-shortcuts a:hover{transform:translateY(-3px);border-color:#8eae94}
+body.games-page .activity-shortcuts a>span{font-size:30px}
+body.games-page .activity-shortcuts strong{font-size:15px;line-height:1.35}
+body.games-page .activity-shortcuts small{font-size:12px;line-height:1.5;color:#718279}
+body.games-page .games-contact-inner>div .button{margin-top:20px}
+@media(max-width:850px){body.games-page .activity-shortcuts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){body.games-page .games-hero{padding:48px 0 42px}body.games-page .games-hero h1{font-size:clamp(37px,10vw,52px);letter-spacing:-1px}body.games-page .games-hero-inner>p:not(.eyebrow){font-size:16px;line-height:1.65;margin:18px 0}body.games-page .games-hero-actions{display:grid;grid-template-columns:1fr;gap:10px}body.games-page .games-hero-actions .button{width:100%}body.games-page .activity-shortcuts{gap:9px;margin-bottom:23px}body.games-page .activity-shortcuts a{min-height:132px;padding:14px 12px;border-radius:15px}body.games-page .activity-shortcuts a>span{font-size:26px}body.games-page .activity-shortcuts strong{font-size:14px}body.games-page .activity-shortcuts small{font-size:11px}}
