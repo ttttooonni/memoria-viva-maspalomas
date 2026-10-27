@@ -49,3 +49,90 @@ body.games-page .activity-shortcuts small{font-size:12px;line-height:1.5;color:#
 body.games-page .games-contact-inner>div .button{margin-top:20px}
 @media(max-width:850px){body.games-page .activity-shortcuts{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){body.games-page .games-hero{padding:48px 0 42px}body.games-page .games-hero h1{font-size:clamp(37px,10vw,52px);letter-spacing:-1px}body.games-page .games-hero-inner>p:not(.eyebrow){font-size:16px;line-height:1.65;margin:18px 0}body.games-page .games-hero-actions{display:grid;grid-template-columns:1fr;gap:10px}body.games-page .games-hero-actions .button{width:100%}body.games-page .activity-shortcuts{gap:9px;margin-bottom:23px}body.games-page .activity-shortcuts a{min-height:132px;padding:14px 12px;border-radius:15px}body.games-page .activity-shortcuts a>span{font-size:26px}body.games-page .activity-shortcuts strong{font-size:14px}body.games-page .activity-shortcuts small{font-size:11px}}
+
+
+/* Experiencia de juego: visual clara, accesible y centrada en la actividad */
+body.games-page .games-hero{padding:46px 0 42px;background:linear-gradient(145deg,#e9f0e7 0%,#f8f5ed 78%);overflow:hidden}
+body.games-page .games-hero:after{font-size:145px;right:4%;top:2%;color:rgba(36,86,78,.045)}
+body.games-page .games-hero h1{max-width:760px;font-size:clamp(38px,5.3vw,60px);line-height:1.08;letter-spacing:-1.2px;font-weight:600}
+body.games-page .games-hero h1 em{color:#9b624b}
+body.games-page .games-hero-inner>p:not(.eyebrow){max-width:680px;font-size:17px;line-height:1.7;margin:18px 0;color:#405c51}
+body.games-page .games-hero-actions{margin-top:20px}
+body.games-page .games-hero-actions .button-secondary{background:rgba(255,253,248,.65);border-color:#bdcec2}
+body.games-page .games-hero-badges{margin-top:18px;gap:8px}
+body.games-page .games-hero-badges span{background:rgba(255,253,248,.55);font-size:12px}
+body.games-page .games-library{padding-top:58px}
+body.games-page .games-heading{margin-bottom:28px}
+body.games-page .games-heading h2{line-height:1.12}
+body.games-page .activity-shortcuts{gap:14px;margin-bottom:28px}
+body.games-page .activity-shortcuts a{min-height:135px;padding:18px;border-radius:18px;border-color:#e0e7dd;box-shadow:0 6px 20px rgba(35,70,57,.055)}
+body.games-page .activity-shortcuts a>span{display:grid;place-items:center;width:48px;height:48px;border-radius:15px;background:#e7eee6;font-size:26px}
+body.games-page .activity-shortcuts a:nth-child(2)>span{background:#f4e0d6}
+body.games-page .activity-shortcuts a:nth-child(3)>span{background:#f5edcf}
+body.games-page .activity-shortcuts a:nth-child(4)>span{background:#e5e4f2}
+body.games-page .activity-shortcuts strong{font-size:16px}
+body.games-page .activity-shortcuts small{font-size:13px}
+body.games-page .play-settings{background:#f7f7f0}
+body.games-page .game-tabs{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:20px}
+body.games-page .game-tab{min-height:120px;padding:16px;border-radius:17px;justify-content:flex-start}
+body.games-page .game-tab.active{padding:15px;background:#e5eee3;border-color:#47765c;box-shadow:inset 0 0 0 1px #47765c}
+body.games-page .game-tab>span{font-size:28px}
+body.games-page .game-tab strong{font-size:14px;line-height:1.35}
+body.games-page .game-tab small{font-size:12px;line-height:1.45}
+body.games-page .game-stage{border-radius:22px;box-shadow:0 12px 35px rgba(35,70,57,.06)}
+body.games-page .game-panel{padding:clamp(20px,3.5vw,36px)}
+body.games-page .game-panel-head{align-items:flex-start}
+body.games-page .game-panel-head h3{font-size:clamp(25px,3.5vw,34px);line-height:1.2}
+body.games-page .game-panel-head p:not(.card-label){font-size:15px;line-height:1.7}
+body.games-page .quiz-option{min-height:58px;font-size:15px;line-height:1.45}
+body.games-page .memory-card{min-height:84px}
+body.games-page .game-actions .button,body.games-page .quiz-card>.button,body.games-page .word-card>.button,body.games-page .prompt-actions .button{min-height:48px}
+body.games-page .floating-whatsapp{display:none!important}
+body.games-page .nav-menu .nav-cta{background:transparent;color:var(--pine);border:1px solid #bdcec2}
+@media(max-width:700px){
+ body.games-page .games-hero{padding:30px 0 32px}
+ body.games-page .games-hero h1{font-size:clamp(35px,9vw,47px);letter-spacing:-.9px}
+ body.games-page .games-hero-inner>p:not(.eyebrow){font-size:16px;line-height:1.65;margin:16px 0}
+ body.games-page .games-hero-actions{display:flex;flex-direction:column;align-items:stretch;gap:9px}
+ body.games-page .games-hero-actions .button{width:100%;min-height:50px}
+ body.games-page .games-hero-badges{gap:7px;margin-top:15px}
+ body.games-page .games-hero-badges span{font-size:11px;padding:7px 10px}
+ body.games-page .games-library{padding-top:42px}
+ body.games-page .games-heading{margin-bottom:23px}
+ body.games-page .games-heading h2{font-size:clamp(32px,8vw,40px)}
+ body.games-page .activity-shortcuts{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:22px}
+ body.games-page .activity-shortcuts a{min-height:136px;padding:13px;gap:7px;border-radius:15px}
+ body.games-page .activity-shortcuts a>span{width:42px;height:42px;border-radius:13px;font-size:23px}
+ body.games-page .activity-shortcuts strong{font-size:14px;line-height:1.35}
+ body.games-page .activity-shortcuts small{font-size:12px;line-height:1.4}
+ body.games-page .game-tabs{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-bottom:16px}
+ body.games-page .game-tab{min-height:100px;padding:13px;border-radius:15px;gap:4px}
+ body.games-page .game-tab.active{padding:12px}
+ body.games-page .game-tab>span{font-size:25px;margin-bottom:1px}
+ body.games-page .game-tab strong{font-size:14px}
+ body.games-page .game-tab small{font-size:12px}
+ body.games-page .game-stage{border-radius:18px}
+ body.games-page .game-panel{padding:17px}
+ body.games-page .game-panel-head{gap:10px;padding-bottom:17px;margin-bottom:18px}
+ body.games-page .game-panel-head h3{font-size:25px}
+ body.games-page .game-panel-head p:not(.card-label){font-size:14px}
+ body.games-page .game-illustration{width:48px;height:48px;flex-basis:48px;border-radius:15px;font-size:25px}
+ body.games-page .memory-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+ body.games-page .memory-card{min-height:76px;font-size:28px}
+ body.games-page .quiz-options{grid-template-columns:1fr;gap:9px}
+ body.games-page .quiz-option{min-height:54px;padding:13px;font-size:15px}
+ body.games-page .quiz-card h4{font-size:27px}
+ body.games-page .object-scene{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ body.games-page .scene-object{min-height:90px}
+ body.games-page .photo-frame img{height:240px}
+ body.games-page .assistive-tools{display:grid;grid-template-columns:1fr 1fr}
+ body.games-page .assistive-button{min-height:48px;font-size:14px}
+ body.games-page .assistive-feedback{grid-column:1/-1}
+ body.games-page .nav-menu .nav-cta{background:transparent;color:var(--pine);border:1px solid #bdcec2}
+}
+@media(max-width:370px){
+ body.games-page .activity-shortcuts a{padding:11px;min-height:130px}
+ body.games-page .activity-shortcuts strong{font-size:13px}
+ body.games-page .game-tab{padding:11px}
+ body.games-page .game-tab.active{padding:10px}
+}
