@@ -60,7 +60,8 @@
   const symbols = ["🌻", "☕", "🎸", "🐚", "🍊", "📚", "🧶", "🌼"];
   let deck = [], firstCard = null, lockBoard = false, matchedPairs = 0, turns = 0, memoryPairCount = 6;
   function setupMemory() {
-    memoryPairCount = difficulty === "facil" ? 3 : difficulty === "reto" ? 8 : 6;\n    deck = shuffle([...symbols.slice(0, memoryPairCount), ...symbols.slice(0, memoryPairCount)]); firstCard = null; lockBoard = false; matchedPairs = 0; turns = 0;
+    memoryPairCount = difficulty === "facil" ? 3 : difficulty === "reto" ? 8 : 6;
+    deck = shuffle([...symbols.slice(0, memoryPairCount), ...symbols.slice(0, memoryPairCount)]); firstCard = null; lockBoard = false; matchedPairs = 0; turns = 0;
     $("memory-grid").innerHTML = ""; $("memory-status").textContent = "Pulsa dos cartas para empezar."; $("memory-pairs").textContent = "Parejas: 0 de " + memoryPairCount;
     deck.forEach((symbol, index) => {
       const button = document.createElement("button"); button.type = "button"; button.className = "memory-card"; button.dataset.symbol = symbol; button.dataset.index = String(index); button.textContent = "✳"; button.setAttribute("aria-label", "Carta " + (index + 1) + ", oculta");
@@ -111,7 +112,8 @@
   $("proverb-next").addEventListener("click", () => { proverbIndex++; showProverb(); }); showProverb();
 
   // Juego 3: cadena de palabras. Se comprueba la letra inicial, no el diccionario.
-  let currentWord = "MESA", wordHistory = ["MESA"];\n  function resetWordGame() { currentWord = difficulty === "facil" ? "CASA" : difficulty === "reto" ? "AZAHAR" : "MESA"; wordHistory = [currentWord]; $("word-feedback").textContent = "Empezamos de nuevo con " + currentWord + "."; renderWord(); }
+  let currentWord = "MESA", wordHistory = ["MESA"];
+  function resetWordGame() { currentWord = difficulty === "facil" ? "CASA" : difficulty === "reto" ? "AZAHAR" : "MESA"; wordHistory = [currentWord]; $("word-feedback").textContent = "Empezamos de nuevo con " + currentWord + "."; renderWord(); }
   function renderWord() { $("word-current").textContent = currentWord; $("word-prompt").textContent = "Busca una palabra que empiece por " + currentWord.slice(-1).toLocaleUpperCase("es") + "."; $("word-history").innerHTML = ""; wordHistory.forEach((word) => { const chip = document.createElement("span"); chip.className = "word-chip"; chip.textContent = word; $("word-history").appendChild(chip); }); }
   $("word-form").addEventListener("submit", (event) => {
     event.preventDefault(); const raw = $("word-input").value.trim(); const word = normalize(raw); const required = normalize(currentWord.slice(-1));
@@ -198,4 +200,45 @@
   $("prompt-next").addEventListener("click", () => { promptIndex++; showPrompt(); });
   $("prompt-fav").addEventListener("click", () => { const item = promptDeck[promptIndex][1]; if (favouritePrompts.has(item)) { favouritePrompts.delete(item); $("prompt-feedback").textContent = "Pregunta quitada de favoritas."; } else { favouritePrompts.add(item); $("prompt-feedback").textContent = "Marcada como favorita mientras esta página esté abierta."; } showPrompt(); $("prompt-feedback").textContent = favouritePrompts.has(item) ? "Marcada como favorita mientras esta página esté abierta." : "Pregunta quitada de favoritas."; });
   showPrompt();
+
+  // Juego 7: cultura canaria, pensado para conversar y compartir recuerdos.
+  const canaryQuestions = [
+    {q:"¿Con qué se elabora tradicionalmente el gofio?",a:["Con cereales tostados y molidos","Con patata y queso","Con plátano y miel"],correct:0},
+    {q:"¿Qué instrumento de cuerda es muy representativo de la música canaria?",a:["El timple","La gaita escocesa","La mandolina rusa"],correct:0},
+    {q:"¿Cómo se suelen servir las papas arrugadas?",a:["Con su piel y sal, a menudo con mojo","Peladas y cubiertas de azúcar","En puré con nata"],correct:0},
+    {q:"¿Qué formación rocosa es uno de los símbolos naturales de Gran Canaria?",a:["Roque Nublo","La Alhambra","Los Picos de Europa"],correct:0},
+    {q:"¿Qué suele ser una romería tradicional?",a:["Una celebración popular con música y costumbres locales","Una competición de natación","Una exposición de coches"],correct:0},
+    {q:"¿Qué fruta se cultiva ampliamente en Canarias y es conocida por su dulzor?",a:["El plátano","El arándano ártico","La grosella negra"],correct:0},
+    {q:"¿Qué salsa canaria se sirve a menudo con papas arrugadas?",a:["Mojo","Pesto genovés","Salsa tártara"],correct:0},
+    {q:"¿Qué nombre recibe una actividad tradicional de lucha canaria?",a:["Intentar derribar al contrario siguiendo reglas propias","Golpear una pelota con raqueta","Lanzar discos a una diana"],correct:0},
+    {q:"¿Qué paisaje natural es muy conocido en Gran Canaria?",a:["Las dunas de Maspalomas","El glaciar Perito Moreno","El fiordo de Geiranger"],correct:0},
+    {q:"¿Qué se puede encontrar en una fiesta tradicional canaria?",a:["Música, comida compartida y tradiciones locales","Solo deportes de invierno","Únicamente carreras de coches"],correct:0},
+    {q:"¿Qué tipo de leche se usa tradicionalmente en muchos quesos canarios?",a:["Leche de cabra","Leche de reno","Leche de búfala exclusivamente"],correct:0},
+    {q:"¿Qué instrumento puede acompañar una isa canaria?",a:["Timple","Didgeridoo","Balalaica"],correct:0}
+  ];
+  let canaryDeck = shuffle(canaryQuestions), canaryIndex = 0;
+  function showCanaryQuestion() {
+    if (canaryIndex >= canaryDeck.length) { canaryDeck = shuffle(canaryQuestions); canaryIndex = 0; }
+    const item = canaryDeck[canaryIndex];
+    $("canary-counter").textContent = "Pregunta " + (canaryIndex + 1) + " de " + canaryDeck.length;
+    $("canary-question").textContent = item.q; $("canary-feedback").textContent = ""; $("canary-options").innerHTML = "";
+    shuffle(item.a.map((answer, index) => ({answer,index}))).forEach(({answer,index}) => {
+      const button = document.createElement("button"); button.type = "button"; button.className = "quiz-option"; button.textContent = answer;
+      button.addEventListener("click", () => {
+        [...$("canary-options").children].forEach((b) => b.disabled = true);
+        if (index === item.correct) {
+          button.classList.add("correct");
+          $("canary-feedback").textContent = "¡Así es! ¿Qué recuerdo, receta o historia te viene a la cabeza al hablar de esto?";
+        } else {
+          button.classList.add("incorrect");
+          [...$("canary-options").children].forEach((b) => { if (b.textContent === item.a[item.correct]) b.classList.add("correct"); });
+          $("canary-feedback").textContent = "La respuesta que buscábamos era: " + item.a[item.correct] + ". No pasa nada: ¿conocías alguna historia relacionada?";
+        }
+      });
+      $("canary-options").appendChild(button);
+    });
+  }
+  $("canary-next").addEventListener("click", () => { canaryIndex++; showCanaryQuestion(); });
+  showCanaryQuestion();
+
 })();
