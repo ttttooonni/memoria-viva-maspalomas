@@ -58,10 +58,10 @@
 
   // Juego 1: parejas. No hay reloj ni penalización.
   const symbols = ["🌻", "☕", "🎸", "🐚", "🍊", "📚", "🧶", "🌼"];
-  let deck = [], firstCard = null, lockBoard = false, matchedPairs = 0, turns = 0;
+  let deck = [], firstCard = null, lockBoard = false, matchedPairs = 0, turns = 0, memoryPairCount = 6;
   function setupMemory() {
-    const pairCount = difficulty === "facil" ? 3 : difficulty === "reto" ? 8 : 6;\n    deck = shuffle([...symbols.slice(0, pairCount), ...symbols.slice(0, pairCount)]); firstCard = null; lockBoard = false; matchedPairs = 0; turns = 0;
-    $("memory-grid").innerHTML = ""; $("memory-status").textContent = "Pulsa dos cartas para empezar."; $("memory-pairs").textContent = "Parejas: 0 de " + pairCount;
+    memoryPairCount = difficulty === "facil" ? 3 : difficulty === "reto" ? 8 : 6;\n    deck = shuffle([...symbols.slice(0, memoryPairCount), ...symbols.slice(0, memoryPairCount)]); firstCard = null; lockBoard = false; matchedPairs = 0; turns = 0;
+    $("memory-grid").innerHTML = ""; $("memory-status").textContent = "Pulsa dos cartas para empezar."; $("memory-pairs").textContent = "Parejas: 0 de " + memoryPairCount;
     deck.forEach((symbol, index) => {
       const button = document.createElement("button"); button.type = "button"; button.className = "memory-card"; button.dataset.symbol = symbol; button.dataset.index = String(index); button.textContent = "✳"; button.setAttribute("aria-label", "Carta " + (index + 1) + ", oculta");
       button.addEventListener("click", () => flipCard(button)); $("memory-grid").appendChild(button);
@@ -74,8 +74,8 @@
     turns++; const second = button;
     if (firstCard.dataset.symbol === second.dataset.symbol) {
       [firstCard, second].forEach((card) => { card.classList.remove("revealed"); card.classList.add("matched"); card.disabled = true; }); matchedPairs++;
-      $("memory-pairs").textContent = "Parejas: " + matchedPairs + " de " + pairCount;
-      $("memory-status").textContent = matchedPairs === pairCount ? "¡Habéis encontrado todas las parejas! ¡Bien hecho!" : "¡Pareja encontrada! Seguimos cuando quieras.";
+      $("memory-pairs").textContent = "Parejas: " + matchedPairs + " de " + memoryPairCount;
+      $("memory-status").textContent = matchedPairs === memoryPairCount ? "¡Habéis encontrado todas las parejas! ¡Bien hecho!" : "¡Pareja encontrada! Seguimos cuando quieras.";
       firstCard = null;
     } else {
       lockBoard = true; $("memory-status").textContent = "No pasa nada. Vamos a probar con otras cartas.";
