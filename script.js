@@ -8,7 +8,7 @@
     window.setTimeout(() => toast.classList.remove("visible"), 4200);
   };
   document.querySelectorAll(".js-whatsapp").forEach((link) => {
-    const message = link.dataset.message || "Hola, quiero información sobre Memoria Viva Maspalomas.";
+    const message = link.dataset.message || "Hola, quiero información sobre Memoria Viva.";
     const number = String(config.whatsappNumber || "").replace(/\D/g, "");
     if (number.length >= 8) {
       link.href = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
